@@ -107,6 +107,34 @@ ul li{
 #a-tag{
     color: greenyellow;
 }
+.text-area{
+    width: 135%;
+    border-radius: 10px;
+    height: 135px;
+}
+.send-btn{
+    position: absolute;
+    margin-top: -80px;
+    width: 20%;
+    left: 25px;
+}
+
+@media screen and (max-width: 480px) {
+
+.text-area{
+    width: 130%;
+    border-radius: 10px;
+    height: 135px;
+}
+.send-btn{
+    position: absolute;
+    margin-top: -80px;
+    width: 20%;
+    left: 25px;
+}
+
+}
+
 agm-map {
-  height: 400px;
+  height: 300px;
 }

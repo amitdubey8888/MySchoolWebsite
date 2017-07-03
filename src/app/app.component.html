@@ -41,6 +41,63 @@
 
 <!--Header End-->
 
+
+<!--Start Of Contact Form-->
+<div class="container" style="padding-top:2%;">
+<h4 class="text-center" style="text-decoration: underline; color: chocolate;">Contact Us</h4>
+    <form [formGroup]="contactForm" (ngSubmit)="sendEmail($event)">
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label for="name" class="col-2 col-form-label">Name</label>
+          <div class="col-10">
+            <input class="form-control" formControlName="name" type="text" placeholder="What's your mom call you?">
+              <p *ngIf="name.touched && name.hasError('required')" style="color:red; font-weight:600;">Required</p>            
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label for="email" class="col-2 col-form-label">Email</label>
+          <div class="col-10">
+            <input class="form-control" formControlName="email" type="email" placeholder="Where we can shoot an email?">
+              <p *ngIf="email.touched && email.hasError('required')" style="color:red; font-weight:600;">Required</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label for="telephone" class="col-2 col-form-label">Telephone</label>
+          <div class="col-10">
+            <input class="form-control" formControlName="telephone" type="tel" placeholder="Where we can call you?">
+              <p *ngIf="telephone.touched && telephone.hasError('required')" style="color:red; font-weight:600;">Required</p>            
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label for="message">Message</label>
+          <div class="col-10">
+            <textarea class="form-control text-area" formControlName="message" type="text" placeholder="What's in your mind?"></textarea>
+              <p *ngIf="message.touched && message.hasError('required')" style="color:red; font-weight:600;">Required</p>            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row send-btn">
+      <div class="form-group">
+        <div class="col-10">
+          <button class="btn btn-success" type="submit" style="width:100px;" [disabled]="!contactForm.valid">Send</button>
+        </div>
+      </div>
+    </div>
+    </form>
+</div>
+
+<!--End Of Contact Form-->
+
 <!--Google Map-->
 
 <agm-map [latitude]="lat" [longitude]="lng">
