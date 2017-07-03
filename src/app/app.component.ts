@@ -8,7 +8,7 @@ import { FormBuilder, Validators, FormGroup, FormControl, AbstractControl} from 
 export class AppComponent {
   lat: number = 26.850139;
   lng: number = 75.790960;
-   
+  mail_successfull: boolean = false;
   contactForm:FormGroup;
   name: AbstractControl;
   email: AbstractControl;
@@ -34,7 +34,7 @@ export class AppComponent {
      this.email = this.contactForm.value.email;
      this.telephone = this.contactForm.value.telephone;
      this.message = this.contactForm.value.message;
-     
+     this.mail_successfull = true;
   }
 
 }

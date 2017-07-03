@@ -45,6 +45,7 @@
 <!--Start Of Contact Form-->
 <div class="container" style="padding-top:2%;">
 <h4 class="text-center" style="text-decoration: underline; color: chocolate;">Contact Us</h4>
+    <p *ngIf="mail_successfull" style="text-align:center;color:green;">Your message has been send successfully!</p>
     <form [formGroup]="contactForm" (ngSubmit)="sendEmail($event)">
     <div class="row">
       <div class="col">
