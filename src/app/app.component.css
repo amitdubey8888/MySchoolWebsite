@@ -1,0 +1,94 @@
+/*  Navbar Start */
+
+.navbar-header{
+
+    background-color:#ff7655;
+
+}
+
+#text-color-value{
+
+    color:aliceblue;
+
+}
+
+a.nav-link {
+    
+    color: aliceblue;
+
+}
+
+a.nav-link:hover,a.nav-link:active ,a.nav-link:focus{
+
+    color: darkblue;
+
+    border: 1px solid darkseagreen;
+
+    border-radius: 10px;
+
+    background: darkseagreen;
+
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1010px)  {
+
+    ul#navbar-ul-style {
+
+        margin-left: 7%;
+
+    }
+
+}
+
+@media only screen and (min-width: 1010px) and (max-width: 1022px)  {
+
+    ul#navbar-ul-style {
+
+        margin-left: 9%;
+
+    }
+
+}
+
+@media screen and (min-width: 1022px) {
+
+    ul#navbar-ul-style {
+   
+        margin-left: 10%;
+   
+    }
+
+}
+
+@media screen and (min-width: 1023px) {
+    
+    ul#navbar-ul-style {
+    
+        margin-left: 27%;
+    
+    }
+
+}
+
+/* Navbar End */
+
+/* Footer Start */
+
+.footer-style {
+
+    background-color: #494949;
+
+    color:#fff;
+
+    height:250px;
+
+}
+
+.footer-default {
+
+    clear: both;
+
+    position: relative;
+
+    height: auto;
+}
