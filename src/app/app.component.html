@@ -1,3 +1,5 @@
+<!--Header Start-->
+
 <nav class="navbar navbar-toggleable-md navbar-header">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -37,7 +39,81 @@
   </div>
 </nav>
 
+<!--Header End-->
 
-<footer class="container-fluid text-center footer-style">
-  <p>Template Made By <a href="https://www.tejaaslabs.com" title="Visit Tejaas Labs">www.tejaaslabs.com</a></p>
+<!--Google Map-->
+
+<div id="googleMap" style="height:400px;width:100%;"></div>
+<script>
+function myMap() {
+var myCenter = new google.maps.LatLng(41.878114, -87.629798);
+var mapProp = {center:myCenter, zoom:12, scrollwheel:false, draggable:false, mapTypeId:google.maps.MapTypeId.ROADMAP};
+var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+var marker = new google.maps.Marker({position:myCenter});
+marker.setMap(map);
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
+
+<!--End of Google Map-->
+
+<!--Footer Start-->
+
+<footer class="container-fluid footer-style">
+  <div class="row">
+    <div class="col-4">
+      <ul>
+        <li><a href="">Community</a></li>
+        <li><a href="">Blog</a></li>
+        <li><a href="">Feedback</a></li>        
+      </ul>
+    </div>
+    <div class="col-4">
+      <ul>
+        <li><a href="">Terms of Service</a></li>
+        <li><a href="">Privacy Policy</a></li>
+        <li><a href="">Help & Support</a></li>        
+      </ul>
+    </div>
+    <div class="col-4">
+      <address style="font-size:smaller; color:lavender;">
+        <h6>Contact Us</h6>
+         4-A, Green Nagar, Near Dalda Factory,<br>
+         Durgapura, Jaipur, Rajasthan, Pin - 302018<br>
+         Phone: <a id="a-tag" href= "tel:+917610002325" title="Call to +917610002325">+917610002325</a> ,<a id="a-tag" href="tel:+919415537946" title="Call to +919415537946">+919415537946</a><br>
+         Email: <a id="a-tag" href= "mailto:contact@tejaaslabs.com?Subject=Contact%20Form" target="_top" title="Mail To contact@tejaaslabs.com">contact@tejaaslabs.com</a><br>
+      </address>
+    </div>
+  </div>
+  <div class="row social-border">
+    <div class="col"></div>
+    <div class="col-6 text-center" style="margin-top:2%;">
+       <p style="font-size: x-large;">Stay Connected With Us</p>
+       <ul class="social-ul">
+        <li class="social-li">
+          <a href="https://www.facebook.com/" target="_blank" title="Visit our facebook page"><span><i class="fa fa-facebook-square" aria-hidden="true"></i></span></a>
+        </li>
+        <li class="social-li">
+          <a href="https://www.plus.google.com/" target="_blank" title="Visit our google-plus page"><span><i class="fa fa-google-plus-square" aria-hidden="true"></i></span></a>
+        </li>
+        <li class="social-li">
+          <a href="https://www.twitter.com/" target="_blank" title="Visit our twitter page"><span><i class="fa fa-twitter-square" aria-hidden="true"></i></span></a>
+        </li>
+        <li class="social-li">
+          <a href="https://www.linkedin.com/" target="_blank" title="Visit our linkedin page"><span><i class="fa fa-linkedin-square" aria-hidden="true"></i></span></a>
+        </li>
+      </ul>
+    </div>
+    <div class="col"></div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <p style="margin: 10px 0px 10px 0px; text-align: -webkit-center;">&copy; All Right Reserved By Tejaas Labs</p>
+    </div>
+    <div class="col">
+      <p style="margin: 10px 0px 10px 0px; text-align: -webkit-center;">Template Made By <a href="https://www.tejaaslabs.com" title="Visit Tejaas Labs">www.tejaaslabs.com</a></p>
+    </div>
+  </div>
 </footer>
+
+<!--End Of Footer-->
