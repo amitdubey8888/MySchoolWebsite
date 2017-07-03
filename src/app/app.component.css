@@ -107,3 +107,6 @@ ul li{
 #a-tag{
     color: greenyellow;
 }
+agm-map {
+  height: 400px;
+}
