@@ -1,24 +1,169 @@
-<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+<!--Header Start-->
+
+<nav class="navbar navbar-toggleable-md navbar-header">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand" href="#">Navbar</a>
+  <a class="navbar-brand" href="#" id="text-color-value">School Name</a>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
+    <ul class="navbar-nav mr-auto" id="navbar-ul-style">
+      <li class="nav-item">
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" href="#" title="See Our School">The School</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
+        <a class="nav-link" href="#" title="Get Admission">Admission</a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="#" title="See Our Events">Events</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" title="See Our Curriculum & Activities">Curriculum</a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="#" title="See Our School Space">Spaces</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" title="See Our Achievements">Achievements</a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="#" title="See Our Community">Community</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" title="We would love to hear from you.">Contact Us</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
   </div>
 </nav>
+
+<!--Header End-->
+
+
+<!--Start Of Contact Form-->
+<div class="container" style="padding-top:2%;">
+<h4 class="text-center" style="text-decoration: underline; color: chocolate;">Contact Us</h4>
+    <p *ngIf="mail_successfull" style="text-align:center;color:green;">Your message has been send successfully!</p>
+    <form [formGroup]="contactForm" (ngSubmit)="sendEmail($event)">
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label for="name" class="col-2 col-form-label">Name</label>
+          <div class="col-10">
+            <input class="form-control" formControlName="name" type="text" placeholder="What's your mom call you?">
+              <p *ngIf="name.touched && name.hasError('required')" style="color:red; font-weight:600;">Required</p>            
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label for="email" class="col-2 col-form-label">Email</label>
+          <div class="col-10">
+            <input class="form-control" formControlName="email" type="email" placeholder="Where we can shoot an email?">
+              <p *ngIf="email.touched && email.hasError('required')" style="color:red; font-weight:600;">Required</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label for="telephone" class="col-2 col-form-label">Telephone</label>
+          <div class="col-10">
+            <input class="form-control" formControlName="telephone" type="tel" placeholder="Where we can call you?">
+              <p *ngIf="telephone.touched && telephone.hasError('required')" style="color:red; font-weight:600;">Required</p>            
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label for="message">Message</label>
+          <div class="col-10">
+            <textarea class="form-control text-area" formControlName="message" type="text" placeholder="What's in your mind?"></textarea>
+              <p *ngIf="message.touched && message.hasError('required')" style="color:red; font-weight:600;">Required</p>            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row send-btn">
+      <div class="form-group">
+        <div class="col-10">
+          <button class="btn btn-success" type="submit" style="width:100px;" [disabled]="!contactForm.valid">Send</button>
+        </div>
+      </div>
+    </div>
+    </form>
+</div>
+
+<!--End Of Contact Form-->
+
+<!--Google Map-->
+
+<agm-map [latitude]="lat" [longitude]="lng">
+  <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+</agm-map>
+
+<!--End of Google Map-->
+
+<!--Footer Start-->
+
+<footer class="container-fluid footer-style">
+  <div class="row">
+    <div class="col-4">
+      <ul>
+        <li><a href="">Community</a></li>
+        <li><a href="">Blog</a></li>
+        <li><a href="">Feedback</a></li>        
+      </ul>
+    </div>
+    <div class="col-4">
+      <ul>
+        <li><a href="">Terms of Service</a></li>
+        <li><a href="">Privacy Policy</a></li>
+        <li><a href="">Help & Support</a></li>        
+      </ul>
+    </div>
+    <div class="col-4">
+      <address style="font-size:smaller; color:lavender;">
+        <h6>Contact Us</h6>
+         4-A, Green Nagar, Near Dalda Factory,<br>
+         Durgapura, Jaipur, Rajasthan, Pin - 302018<br>
+         Phone: <a id="a-tag" href= "tel:+917610002325" title="Call to +917610002325">+917610002325</a> ,<a id="a-tag" href="tel:+919415537946" title="Call to +919415537946">+919415537946</a><br>
+         Email: <a id="a-tag" href= "mailto:contact@tejaaslabs.com?Subject=Contact%20Form" target="_top" title="Mail To contact@tejaaslabs.com">contact@tejaaslabs.com</a><br>
+      </address>
+    </div>
+  </div>
+  <div class="row social-border">
+    <div class="col"></div>
+    <div class="col-6 text-center" style="margin-top:2%;">
+       <p style="font-size: x-large;">Stay Connected With Us</p>
+       <ul class="social-ul">
+        <li class="social-li">
+          <a href="https://www.facebook.com/" target="_blank" title="Visit our facebook page"><span><i class="fa fa-facebook-square" aria-hidden="true"></i></span></a>
+        </li>
+        <li class="social-li">
+          <a href="https://www.plus.google.com/" target="_blank" title="Visit our google-plus page"><span><i class="fa fa-google-plus-square" aria-hidden="true"></i></span></a>
+        </li>
+        <li class="social-li">
+          <a href="https://www.twitter.com/" target="_blank" title="Visit our twitter page"><span><i class="fa fa-twitter-square" aria-hidden="true"></i></span></a>
+        </li>
+        <li class="social-li">
+          <a href="https://www.linkedin.com/" target="_blank" title="Visit our linkedin page"><span><i class="fa fa-linkedin-square" aria-hidden="true"></i></span></a>
+        </li>
+      </ul>
+    </div>
+    <div class="col"></div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <p style="margin: 10px 0px 10px 0px; text-align: -webkit-center;">&copy; All Right Reserved By Tejaas Labs</p>
+    </div>
+    <div class="col">
+      <p style="margin: 10px 0px 10px 0px; text-align: -webkit-center;">Template Made By <a href="https://www.tejaaslabs.com" title="Visit Tejaas Labs">www.tejaaslabs.com</a></p>
+    </div>
+  </div>
+</footer>
+
+<!--End Of Footer-->
