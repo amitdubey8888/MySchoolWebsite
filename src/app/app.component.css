@@ -84,6 +84,13 @@ a.nav-link:hover,a.nav-link:active ,a.nav-link:focus{
 .curriculum-media{
     padding-left: 10%;
     padding-right:10%;
+    font-family: -webkit-body;
+}
+.curriculum-h4{
+    color: forestgreen;
+    padding-bottom: 1%;
+    text-decoration: underline;
+    text-align: center;
 }
 /*Curriculum End*/
 
