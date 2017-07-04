@@ -75,6 +75,18 @@ a.nav-link:hover,a.nav-link:active ,a.nav-link:focus{
 
 /*H4-Tag Style End*/
 
+/*Curriculum Start*/
+
+.curriculum-image{
+    width: 100%;
+    height: 300px;
+}
+.curriculum-media{
+    padding-left: 10%;
+    padding-right:10%;
+}
+/*Curriculum End*/
+
 /*Start Of Spaces*/
 
 .space-image{
