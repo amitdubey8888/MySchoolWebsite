@@ -34,43 +34,111 @@ a.nav-link:hover,a.nav-link:active ,a.nav-link:focus{
 
     ul#navbar-ul-style {
 
-        margin-left: 7%;
+        margin-left: 5%;
 
     }
 
 }
 
-@media only screen and (min-width: 1010px) and (max-width: 1022px)  {
+@media only screen and (min-width: 1011px) and (max-width: 1022px)  {
 
     ul#navbar-ul-style {
 
-        margin-left: 9%;
+        margin-left: 8%;
 
     }
 
 }
 
-@media screen and (min-width: 1022px) {
-
-    ul#navbar-ul-style {
-   
-        margin-left: 10%;
-   
-    }
-
-}
-
-@media screen and (min-width: 1023px) {
+@media only screen and (min-width: 1023px) {
     
     ul#navbar-ul-style {
     
-        margin-left: 27%;
+        margin-left: 18%;
     
     }
-
 }
+
 
 /* Navbar End */
+
+/*Start Of Spaces*/
+
+
+
+/*End Of Spaces*/
+
+/*Start Of Achievement*/
+
+.achievement{
+    background: cadetblue;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+/*End Of Achievement*/
+
+/*Start Of Community*/
+
+.community{
+    background: cadetblue;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.community-image{
+    width: 50%;
+    height: 400px;
+}
+
+.community-text{
+    color: darkslateblue;
+    font-size: large;
+    font-family: -webkit-body;
+}
+
+/*End Of Community*/
+
+/*Contact Form Start*/
+
+.text-area{
+    width: 135%;
+    border-radius: 10px;
+    height: 135px;
+}
+.send-btn{
+    position: absolute;
+    margin-top: -80px;
+    width: 20%;
+    left: 25px;
+}
+
+@media screen and (max-width: 480px) {
+
+.text-area{
+    width: 130%;
+    border-radius: 10px;
+    height: 135px;
+}
+.send-btn{
+    position: absolute;
+    margin-top: -80px;
+    width: 20%;
+    left: 25px;
+}
+
+}
+
+/*End Of Contact Form*/
+
+/*Google Map Start*/
+
+agm-map {
+  height: 300px;
+}
+
+/*Google Map End*/
+
 
 /* Footer Start */
 
@@ -107,34 +175,5 @@ ul li{
 #a-tag{
     color: greenyellow;
 }
-.text-area{
-    width: 135%;
-    border-radius: 10px;
-    height: 135px;
-}
-.send-btn{
-    position: absolute;
-    margin-top: -80px;
-    width: 20%;
-    left: 25px;
-}
 
-@media screen and (max-width: 480px) {
-
-.text-area{
-    width: 130%;
-    border-radius: 10px;
-    height: 135px;
-}
-.send-btn{
-    position: absolute;
-    margin-top: -80px;
-    width: 20%;
-    left: 25px;
-}
-
-}
-
-agm-map {
-  height: 300px;
-}
+/*Footer End*/
