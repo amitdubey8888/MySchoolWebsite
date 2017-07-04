@@ -75,6 +75,15 @@ a.nav-link:hover,a.nav-link:active ,a.nav-link:focus{
 
 /*H4-Tag Style End*/
 
+/*Event Start*/
+
+.event-image{
+    width: 50%;
+    height: 300px;
+}
+
+/*Event End*/
+
 /*Curriculum Start*/
 
 .curriculum-image{
