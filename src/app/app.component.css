@@ -142,33 +142,11 @@ a.nav-link:hover,a.nav-link:active ,a.nav-link:focus{
 
 /*Contact Form Start*/
 
-.text-area{
-    width: 135%;
-    border-radius: 10px;
-    height: 135px;
-}
-.send-btn{
-    position: absolute;
-    margin-top: -80px;
-    width: 20%;
-    left: 25px;
+.contact-label{
+    font-weight: 500;
+    color: cadetblue;
 }
 
-@media screen and (max-width: 480px) {
-
-.text-area{
-    width: 130%;
-    border-radius: 10px;
-    height: 135px;
-}
-.send-btn{
-    position: absolute;
-    margin-top: -80px;
-    width: 20%;
-    left: 25px;
-}
-
-}
 
 /*End Of Contact Form*/
 
@@ -183,7 +161,7 @@ agm-map {
 
 /* Footer Start */
 
-.footer-style {
+.footer{
 
     background-color: #494949;
 
@@ -194,6 +172,18 @@ agm-map {
     padding-bottom: 1%;
 }
 
+.address-style{
+    font-size:smaller; 
+    color:lavender; 
+    padding-left:6%;
+}
+
+@media screen and (max-width: 360px)  {
+    .address-style {
+        padding-left: 12%;
+    }
+}
+
 .social-ul{
     margin: 0px;
 }
@@ -202,9 +192,7 @@ agm-map {
     
     display: inline;
 
-    list-style: none;
-
-    margin-right: 14%;
+    margin-right: 5%;
 }
 .social-li:hover{
     font-size: 41px;

@@ -1,138 +1,232 @@
+<!--Container Start-->
+
+<div class="container-fluid" id="container-style">
+
 <!--Header Start-->
 
-<nav class="navbar navbar-toggleable-md navbar-header">
-  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded navbar-header">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand" href="#" id="text-color-value">School Name</a>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto" id="navbar-ul-style">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" title="Get Admission">Admission</a>
-      </li>
-       <li class="nav-item">
-        <a class="nav-link" href="#" title="See Our Events">Events</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" title="See Our Curriculum & Activities">Curriculum</a>
-      </li>
-       <li class="nav-item">
-        <a class="nav-link" href="#" title="See Our School Space">Spaces</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" title="See Our Achievements">Achievements</a>
-      </li>
-       <li class="nav-item">
-        <a class="nav-link" href="#" title="See Our Community">Community</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" title="We would love to hear from you.">Contact Us</a>
+  <a class="navbar-brand" href="#">School Name</a>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <ul class="navbar-nav mr-auto" id="navbar-ul-style">
+      <li class="nav-item animated rollIn" *ngFor="let navItem of navItems">
+        <a class="nav-link" [attr.href]="navItem.link">{{navItem.name}}</a>
       </li>
     </ul>
+    </div>
   </div>
 </nav>
 
 <!--Header End-->
 
+<!--Home Start-->
+
+<div class="home" id="home" style="width:100%; height:500px;">
+  <h1 class="text-center">I'm Home</h1>
+</div>
+
+<!--End Of Home-->
+
 <!--Admission Start-->
 
-<div class="admission" id="admission">
-  <form >
-    <div class="form-group row">
-      <label for="example-text-input" class="col-2 col-form-label">Text</label>
-      <div class="col-10">
-      <input class="form-control" type="text" value="Artisanal kale" id="example-text-input">
+<div class="admission" id="admission" style="margin-top:66px;">
+<h4 class="h4-style-everypage">Admission Procedure</h4>  
+<div id="accordion_admission" role="tablist" aria-multiselectable="true">
+  <div class="card">
+    <div class="card-header" role="tab" id="admissionOne">
+      <h5 class="mb-0">
+        <a data-toggle="collapse" data-parent="#accordion_admission" href="#ProcedureApply" aria-expanded="true" aria-controls="ProcedureApply">
+          <span><i class="fa fa-graduation-cap" aria-hidden="true"></i> Procedure</span>
+        </a>
+      </h5>
+    </div>
+    <div id="ProcedureApply" class="collapse show" role="tabpanel" aria-labelledby="admissionOne">
+      <div class="card-block community-text">
+        <p style="padding-left:9%; color:green; font-weight:600;">Procedure</p>
+        <div class="row">  
+          <p style="padding-left:10%; color:green;">Important Guidelines for Parents</p>                    
+          <p style="padding-left:10%; padding-right:5%;">   
+           <b> Dear Parents,</b><br>
+            The approval of the Registration Form and Filling of Options Form for HSC and Junior colleges will be done by the school according to the schedule attached here with.<br>
+            Please bring all the original supporting documents along with you. Please fill the Options form given in the booklet so as to not waste time. Any corrections to be made in the Registration form will be done by the school on the same day. Also, please follow the schedule that is given to you so that you do not cause any inconvenience to others.<br>
+            Thanks,<br>
+            Principal<br>
+          </p>
+          <p style="padding-left:10%; color:green;">Important Guidelines for Online Application</p>          
+          <p style="padding-left:10%; padding-right:5%;"> 
+            1. The School believes in absolute transparency with regard to its admissions.<br>
+            2. Prospective parents are requested to check up the School Website from time to time, to ensure that they do not miss the dates.<br>
+            3. All admissions to the school are online.<br>
+            4. Any wrong information on the application form will amount to disqualification.<br>
+            5. Admissions are based on random sampling.<br>
+            6. Recommendation/request letters regarding admission will amount to rejection of the application. Kindly do not meet the school authorities regarding such matters.<br>
+            7. The school does not accept any favors, by way of donations or capitation fees. We advise the parents to stay away from people who promise admissions in exchange for money.<br>
+            8. The Admission Committee reserves its rights on issues regarding admission.<br>
+          </p> 
+        </div>
+       </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab" id="admissionTwo">
+      <h5 class="mb-0">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion_admission" href="#OnlineApply" aria-expanded="false" aria-controls="OnlineApply">
+           <span><i class="fa fa-graduation-cap" aria-hidden="true"></i>Apply Online</span>
+        </a>
+      </h5>
+    </div>
+    <div id="OnlineApply" class="collapse" role="tabpanel" aria-labelledby="admissionTwo">
+      <div class="card-block community-text">
+        <h4 style="text-align:center; color:green; margin:2%;">Online Registration Form</h4>
+        <p *ngIf="form_successfull" style="text-align:center;color:green;">Your form has been submitted successfully!</p>
+        <div class="row">        
+          <form [formGroup]="onlineForm" (ngSubmit)="sendForm($event)">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="first_name" class="col-4 col-form-label">First Name</label>
+                  <div class="col-10">
+                  <input class="form-control" type="text" formControlName="first_name">
+                  <p *ngIf="first_name.touched && first_name.hasError('required')" style="color:red; font-weight:600;">Required</p>  
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="last_name" class="col-4 col-form-label">Last Name</label>
+                  <div class="col-10">
+                  <input class="form-control" type="text" formControlName="last_name">
+                  <p *ngIf="last_name.touched && last_name.hasError('required')" style="color:red; font-weight:600;">Required</p>      
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="father_name" class="col-4 col-form-label">Father Name</label>
+                  <div class="col-10">
+                  <input class="form-control" type="text" formControlName="father_name">
+                  <p *ngIf="father_name.touched && father_name.hasError('required')" style="color:red; font-weight:600;">Required</p>          
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="mother_name" class="col-4 col-form-label">Mother Name</label>
+                  <div class="col-10">
+                  <input class="form-control" type="text" formControlName="mother_name">
+                  <p *ngIf="mother_name.touched && mother_name.hasError('required')" style="color:red; font-weight:600;">Required</p>         
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="dob" class="col-4 col-form-label">Date of Birth</label>
+                  <div class="col-10">
+                  <input class="form-control" type="date" formControlName="dob">
+                  <p *ngIf="dob.touched && dob.hasError('required')" style="color:red; font-weight:600;">Required</p>         
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="gender" class="col-4 col-form-label">Gender</label>
+                  <div class="col-10">
+                   <select class="form-control" formControlName="gender" id="gender">
+                    <option class="disabled" value="">Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                  </select>
+                  <p *ngIf="gender.touched && gender.hasError('required')" style="color:red; font-weight:600;">Required</p> 
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="telephone" class="col-4 col-form-label">Telephone</label>
+                  <div class="col-10">
+                  <input class="form-control" type="tel" formControlName="telephone">
+                  <p *ngIf="telephone.touched && telephone.hasError('required')" style="color:red; font-weight:600;">Required</p>  
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="email" class="col-4 col-form-label">Email</label>
+                  <div class="col-10">
+                  <input class="form-control" type="email" formControlName="email">
+                  <p *ngIf="email.touched && email.hasError('required')" style="color:red; font-weight:600;">Required</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="street_address" class="col-4 col-form-label">Street Address</label>
+                  <div class="col-10">
+                  <input class="form-control" type="text" formControlName="street_address">
+                  <p *ngIf="street_address.touched && street_address.hasError('required')" style="color:red; font-weight:600;">Required</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="area" class="col-4 col-form-label">Area</label>
+                  <div class="col-10">
+                  <input class="form-control" type="text" formControlName="area">
+                  <p *ngIf="area.touched && area.hasError('required')" style="color:red; font-weight:600;">Required</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="district" class="col-4 col-form-label">District</label>
+                  <div class="col-10">
+                  <input class="form-control" type="text" formControlName="district">
+                  <p *ngIf="district.touched && district.hasError('required')" style="color:red; font-weight:600;">Required</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="state" class="col-4 col-form-label">State</label>
+                  <div class="col-10">
+                  <input class="form-control" type="text" formControlName="state">
+                  <p *ngIf="state.touched && state.hasError('required')" style="color:red; font-weight:600;">Required</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="pin" class="col-4 col-form-label">Pin</label>
+                  <div class="col-10">
+                  <input class="form-control" type="tel" formControlName="pin">
+                  <p *ngIf="pin.touched && pin.hasError('required')" style="color:red; font-weight:600;">Required</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <div class="col-10">
+                    <button class="btn btn-success" type="submit" [disabled]="!onlineForm.valid">Submit</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
-    <div class="form-group row">
-      <label for="example-search-input" class="col-2 col-form-label">Search</label>
-      <div class="col-10">
-      <input class="form-control" type="search" value="How do I shoot web" id="example-search-input">
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="example-email-input" class="col-2 col-form-label">Email</label>
-      <div class="col-10">
-      <input class="form-control" type="email" value="bootstrap@example.com" id="example-email-input">
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="example-url-input" class="col-2 col-form-label">URL</label>
-      <div class="col-10">
-      <input class="form-control" type="url" value="https://getbootstrap.com" id="example-url-input">
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="example-tel-input" class="col-2 col-form-label">Telephone</label>
-      <div class="col-10">
-      <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input">
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="example-password-input" class="col-2 col-form-label">Password</label>
-      <div class="col-10">
-      <input class="form-control" type="password" value="hunter2" id="example-password-input">
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="example-number-input" class="col-2 col-form-label">Number</label>
-      <div class="col-10">
-      <input class="form-control" type="number" value="42" id="example-number-input">
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="example-datetime-local-input" class="col-2 col-form-label">Date and time</label>
-      <div class="col-10">
-      <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input">
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="example-date-input" class="col-2 col-form-label">Date</label>
-      <div class="col-10">
-      <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="example-month-input" class="col-2 col-form-label">Month</label>
-      <div class="col-10">
-      <input class="form-control" type="month" value="2011-08" id="example-month-input">
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="example-week-input" class="col-2 col-form-label">Week</label>
-      <div class="col-10">
-      <input class="form-control" type="week" value="2011-W33" id="example-week-input">
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="example-time-input" class="col-2 col-form-label">Time</label>
-      <div class="col-10">
-      <input class="form-control" type="time" value="13:45:00" id="example-time-input">
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="example-color-input" class="col-2 col-form-label">Color</label>
-      <div class="col-10">
-      <input class="form-control" type="color" value="#563d7c" id="example-color-input">
-      </div>
-    </div>
-    <div class="form-group row">
-      <div class="col-10">
-        <button class="form-control btn btn-success" type="submit">Submit</button>
-      </div>
-    </div>
-  </form>
+  </div>
+</div>
 </div>
 
 <!--Admission End-->
 
 <!--Start Of Events-->
 
-<div class="achievement" id="achievement">
+<div class="events" id="events" style="margin-top:66px;">
 <h4 class="h4-style-everypage">Our Events</h4>
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner" role="listbox">
@@ -243,7 +337,7 @@
 
 <!--Start of Curriculum-->
 
-<div class="spaces" id="spaces">
+<div class="curriculum" id="curriculum" style="margin-top:66px;">
 <h4 class="h4-style-everypage">Curriculum & Activities</h4>
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner" role="listbox">
@@ -353,7 +447,6 @@
         </a>
       </h5>
     </div>
-
     <div id="CurriculumTwo" class="collapse" role="tabpanel" aria-labelledby="activityTwo">
       <div class="card-block community-text">
         <p style="text-align:center; color:green; margin:2%;">Life is a celebration. So is each day at school! I love to care and share with my friends.</p>                            
@@ -510,14 +603,13 @@
     </div>
   </div>
 </div>
-
 </div>
 
 <!--Curriculum End-->
 
 <!--Start of Spaces-->
 
-<div class="spaces" id="spaces">
+<div class="spaces" id="spaces" style="margin-top:66px;">
 <h4 class="h4-style-everypage">Our Space</h4>
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner space-image" role="listbox">
@@ -559,7 +651,7 @@
 
 <!--Start Of Achievement-->
 
-<div class="achievement" id="achievement">
+<div class="achievement" id="achievement" style="margin-top:66px;">
 <h4 class="h4-style-everypage">Our Achievements</h4>
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner" role="listbox">
@@ -714,7 +806,7 @@
 
 <!--Start Of Community-->
 
-<div class="community" id="community">
+<div class="community" id="community" style="margin-top:66px;">
 <h4 class="h4-style-everypage">Our Community</h4>
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner" role="listbox">
@@ -756,7 +848,6 @@
     </div>
   </div>
 </div>
-
 <div id="accordion3" role="tablist" aria-multiselectable="true">
   <div class="card">
     <div class="card-header" role="tab" id="headingOne">
@@ -835,58 +926,56 @@
 <!--End Of Community-->
 
 <!--Start Of Contact Form-->
-<div class="container">
+<div class="contact" id="contact" style="margin-top:66px;">
 <h4 class="h4-style-everypage">Contact Us</h4>
-    <p *ngIf="mail_successfull" style="text-align:center;color:green;">Your message has been send successfully!</p>
-    <form [formGroup]="contactForm" (ngSubmit)="sendEmail($event)">
+  <p *ngIf="customer_mail_successfull" style="text-align:center;color:green;">Your message has been send successfully!</p>
+  <form [formGroup]="contactForm" (ngSubmit)="sendEmail($event)">
     <div class="row">
-      <div class="col">
+      <div class="col-md-6">
         <div class="form-group">
-          <label for="name" class="col-2 col-form-label">Name</label>
+          <label for="name" class="col-2 col-form-label contact-label">Name</label>
           <div class="col-10">
-            <input class="form-control" formControlName="name" type="text" placeholder="What's your mom call you?">
-              <p *ngIf="name.touched && name.hasError('required')" style="color:red; font-weight:600;">Required</p>            
+            <input class="form-control" formControlName="customer_name" type="text">
+              <p *ngIf="customer_name.touched && customer_name.hasError('required')" style="color:red; font-weight:600;">Required</p>          
           </div>
         </div>
       </div>
-      <div class="col">
+      <div class="col-md-6">
         <div class="form-group">
-          <label for="email" class="col-2 col-form-label">Email</label>
+          <label for="email" class="col-2 col-form-label contact-label">Email</label>
           <div class="col-10">
-            <input class="form-control" formControlName="email" type="email" placeholder="Where we can shoot an email?">
-              <p *ngIf="email.touched && email.hasError('required')" style="color:red; font-weight:600;">Required</p>
+            <input class="form-control" formControlName="customer_email" type="email">
+              <p *ngIf="customer_email.touched && customer_email.hasError('required')" style="color:red; font-weight:600;">Required</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="telephone" class="col-2 col-form-label contact-label">Telephone</label>
+          <div class="col-10">
+            <input class="form-control" formControlName="customer_telephone" type="tel">
+            <p *ngIf="customer_telephone.touched && customer_telephone.hasError('required')" style="color:red; font-weight:600;">Required</p>
+            </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="message" class="col-2 col-form-label contact-label">Message</label>
+          <div class="col-10">
+            <textarea class="form-control" formControlName="customer_message" type="text"></textarea>
+            <p *ngIf="customer_message.touched && customer_message.hasError('required')" style="color:red; font-weight:600;">Required</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <div class="col-10">
+            <button class="btn btn-success" type="submit" style="width:100px;" [disabled]="!contactForm.valid">Send</button>
           </div>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col">
-        <div class="form-group">
-          <label for="telephone" class="col-2 col-form-label">Telephone</label>
-          <div class="col-10">
-            <input class="form-control" formControlName="telephone" type="tel" placeholder="Where we can call you?">
-              <p *ngIf="telephone.touched && telephone.hasError('required')" style="color:red; font-weight:600;">Required</p>            
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="form-group">
-          <label for="message">Message</label>
-          <div class="col-10">
-            <textarea class="form-control text-area" formControlName="message" type="text" placeholder="What's in your mind?"></textarea>
-              <p *ngIf="message.touched && message.hasError('required')" style="color:red; font-weight:600;">Required</p>            
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row send-btn">
-      <div class="form-group">
-        <div class="col-10">
-          <button class="btn btn-success" type="submit" style="width:100px;" [disabled]="!contactForm.valid">Send</button>
-        </div>
-      </div>
-    </div>
-    </form>
+  </form>
 </div>
 
 <!--End Of Contact Form-->
@@ -901,24 +990,24 @@
 
 <!--Footer Start-->
 
-<footer class="container-fluid footer-style">
+<div class="footer" id="footer">
   <div class="row">
-    <div class="col-4">
+    <div class="col-md-4">
       <ul>
         <li><a href="">Community</a></li>
         <li><a href="">Blog</a></li>
         <li><a href="">Feedback</a></li>        
       </ul>
     </div>
-    <div class="col-4">
+    <div class="col-md-4">
       <ul>
         <li><a href="">Terms of Service</a></li>
         <li><a href="">Privacy Policy</a></li>
         <li><a href="">Help & Support</a></li>        
       </ul>
     </div>
-    <div class="col-4">
-      <address style="font-size:smaller; color:lavender;">
+    <div class="col-md-4">
+      <address class="address-style">
         <h6>Contact Us</h6>
          4-A, Green Nagar, Near Dalda Factory,<br>
          Durgapura, Jaipur, Rajasthan, Pin - 302018<br>
@@ -928,8 +1017,7 @@
     </div>
   </div>
   <div class="row social-border">
-    <div class="col"></div>
-    <div class="col-6 text-center" style="margin-top:2%;">
+    <div class="col text-center">
        <p style="font-size: x-large;">Stay Connected With Us</p>
        <ul class="social-ul">
         <li class="social-li">
@@ -946,7 +1034,6 @@
         </li>
       </ul>
     </div>
-    <div class="col"></div>
   </div>
   <div class="row">
     <div class="col">
@@ -956,6 +1043,10 @@
       <p style="margin: 10px 0px 10px 0px; text-align: -webkit-center;">Template Made By <a href="https://www.tejaaslabs.com" title="Visit Tejaas Labs">www.tejaaslabs.com</a></p>
     </div>
   </div>
-</footer>
+</div>
 
 <!--End Of Footer-->
+
+</div>
+
+<!--End of Container-->
