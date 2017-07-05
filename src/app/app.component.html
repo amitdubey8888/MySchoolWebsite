@@ -1,100 +1,981 @@
+<!--Container Start-->
+
+<div class="container-fluid" id="container-style">
+
 <!--Header Start-->
 
-<nav class="navbar navbar-toggleable-md navbar-header">
-  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded navbar-header">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand" href="#" id="text-color-value">School Name</a>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto" id="navbar-ul-style">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" title="See Our School">The School</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" title="Get Admission">Admission</a>
-      </li>
-       <li class="nav-item">
-        <a class="nav-link" href="#" title="See Our Events">Events</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" title="See Our Curriculum & Activities">Curriculum</a>
-      </li>
-       <li class="nav-item">
-        <a class="nav-link" href="#" title="See Our School Space">Spaces</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" title="See Our Achievements">Achievements</a>
-      </li>
-       <li class="nav-item">
-        <a class="nav-link" href="#" title="See Our Community">Community</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" title="We would love to hear from you.">Contact Us</a>
+  <a class="navbar-brand" href="#">School Name</a>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <ul class="navbar-nav mr-auto" id="navbar-ul-style">
+      <li class="nav-item animated rollIn" *ngFor="let navItem of navItems">
+        <a class="nav-link" [attr.href]="navItem.link">{{navItem.name}}</a>
       </li>
     </ul>
+    </div>
   </div>
 </nav>
 
 <!--Header End-->
 
+<!--Home Start-->
+
+<div class="home" id="home" style="width:100%; height:500px;">
+  <h1 class="text-center">I'm Home</h1>
+</div>
+
+<!--End Of Home-->
+
+<!--Admission Start-->
+
+<div class="admission" id="admission" style="margin-top:66px;">
+<h4 class="h4-style-everypage">Admission Procedure</h4>  
+<div id="accordion_admission" role="tablist" aria-multiselectable="true">
+  <div class="card">
+    <div class="card-header" role="tab" id="admissionOne">
+      <h5 class="mb-0">
+        <a data-toggle="collapse" data-parent="#accordion_admission" href="#ProcedureApply" aria-expanded="true" aria-controls="ProcedureApply">
+          <span><i class="fa fa-graduation-cap" aria-hidden="true"></i> Procedure</span>
+        </a>
+      </h5>
+    </div>
+    <div id="ProcedureApply" class="collapse show" role="tabpanel" aria-labelledby="admissionOne">
+      <div class="card-block community-text">
+        <p style="padding-left:9%; color:green; font-weight:600;">Procedure</p>
+        <div class="row">  
+          <p style="padding-left:10%; color:green;">Important Guidelines for Parents</p>                    
+          <p style="padding-left:10%; padding-right:5%;">   
+           <b> Dear Parents,</b><br>
+            The approval of the Registration Form and Filling of Options Form for HSC and Junior colleges will be done by the school according to the schedule attached here with.<br>
+            Please bring all the original supporting documents along with you. Please fill the Options form given in the booklet so as to not waste time. Any corrections to be made in the Registration form will be done by the school on the same day. Also, please follow the schedule that is given to you so that you do not cause any inconvenience to others.<br>
+            Thanks,<br>
+            Principal<br>
+          </p>
+          <p style="padding-left:10%; color:green;">Important Guidelines for Online Application</p>          
+          <p style="padding-left:10%; padding-right:5%;"> 
+            1. The School believes in absolute transparency with regard to its admissions.<br>
+            2. Prospective parents are requested to check up the School Website from time to time, to ensure that they do not miss the dates.<br>
+            3. All admissions to the school are online.<br>
+            4. Any wrong information on the application form will amount to disqualification.<br>
+            5. Admissions are based on random sampling.<br>
+            6. Recommendation/request letters regarding admission will amount to rejection of the application. Kindly do not meet the school authorities regarding such matters.<br>
+            7. The school does not accept any favors, by way of donations or capitation fees. We advise the parents to stay away from people who promise admissions in exchange for money.<br>
+            8. The Admission Committee reserves its rights on issues regarding admission.<br>
+          </p> 
+        </div>
+       </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab" id="admissionTwo">
+      <h5 class="mb-0">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion_admission" href="#OnlineApply" aria-expanded="false" aria-controls="OnlineApply">
+           <span><i class="fa fa-graduation-cap" aria-hidden="true"></i>Apply Online</span>
+        </a>
+      </h5>
+    </div>
+    <div id="OnlineApply" class="collapse" role="tabpanel" aria-labelledby="admissionTwo">
+      <div class="card-block community-text">
+        <h4 style="text-align:center; color:green; margin:2%;">Online Registration Form</h4>
+        <p *ngIf="form_successfull" style="text-align:center;color:green;">Your form has been submitted successfully!</p>
+        <div class="row">        
+          <form [formGroup]="onlineForm" (ngSubmit)="sendForm($event)">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="first_name" class="col-4 col-form-label">First Name</label>
+                  <div class="col-10">
+                  <input class="form-control" type="text" formControlName="first_name">
+                  <p *ngIf="first_name.touched && first_name.hasError('required')" style="color:red; font-weight:600;">Required</p>  
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="last_name" class="col-4 col-form-label">Last Name</label>
+                  <div class="col-10">
+                  <input class="form-control" type="text" formControlName="last_name">
+                  <p *ngIf="last_name.touched && last_name.hasError('required')" style="color:red; font-weight:600;">Required</p>      
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="father_name" class="col-4 col-form-label">Father Name</label>
+                  <div class="col-10">
+                  <input class="form-control" type="text" formControlName="father_name">
+                  <p *ngIf="father_name.touched && father_name.hasError('required')" style="color:red; font-weight:600;">Required</p>          
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="mother_name" class="col-4 col-form-label">Mother Name</label>
+                  <div class="col-10">
+                  <input class="form-control" type="text" formControlName="mother_name">
+                  <p *ngIf="mother_name.touched && mother_name.hasError('required')" style="color:red; font-weight:600;">Required</p>         
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="dob" class="col-4 col-form-label">Date of Birth</label>
+                  <div class="col-10">
+                  <input class="form-control" type="date" formControlName="dob">
+                  <p *ngIf="dob.touched && dob.hasError('required')" style="color:red; font-weight:600;">Required</p>         
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="gender" class="col-4 col-form-label">Gender</label>
+                  <div class="col-10">
+                   <select class="form-control" formControlName="gender" id="gender">
+                    <option class="disabled" value="">Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                  </select>
+                  <p *ngIf="gender.touched && gender.hasError('required')" style="color:red; font-weight:600;">Required</p> 
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="telephone" class="col-4 col-form-label">Telephone</label>
+                  <div class="col-10">
+                  <input class="form-control" type="tel" formControlName="telephone">
+                  <p *ngIf="telephone.touched && telephone.hasError('required')" style="color:red; font-weight:600;">Required</p>  
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="email" class="col-4 col-form-label">Email</label>
+                  <div class="col-10">
+                  <input class="form-control" type="email" formControlName="email">
+                  <p *ngIf="email.touched && email.hasError('required')" style="color:red; font-weight:600;">Required</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="street_address" class="col-4 col-form-label">Street Address</label>
+                  <div class="col-10">
+                  <input class="form-control" type="text" formControlName="street_address">
+                  <p *ngIf="street_address.touched && street_address.hasError('required')" style="color:red; font-weight:600;">Required</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="area" class="col-4 col-form-label">Area</label>
+                  <div class="col-10">
+                  <input class="form-control" type="text" formControlName="area">
+                  <p *ngIf="area.touched && area.hasError('required')" style="color:red; font-weight:600;">Required</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="district" class="col-4 col-form-label">District</label>
+                  <div class="col-10">
+                  <input class="form-control" type="text" formControlName="district">
+                  <p *ngIf="district.touched && district.hasError('required')" style="color:red; font-weight:600;">Required</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="state" class="col-4 col-form-label">State</label>
+                  <div class="col-10">
+                  <input class="form-control" type="text" formControlName="state">
+                  <p *ngIf="state.touched && state.hasError('required')" style="color:red; font-weight:600;">Required</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="pin" class="col-4 col-form-label">Pin</label>
+                  <div class="col-10">
+                  <input class="form-control" type="tel" formControlName="pin">
+                  <p *ngIf="pin.touched && pin.hasError('required')" style="color:red; font-weight:600;">Required</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <div class="col-10">
+                    <button class="btn btn-success" type="submit" [disabled]="!onlineForm.valid">Submit</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!--Admission End-->
+
+<!--Start Of Events-->
+
+<div class="events" id="events" style="margin-top:66px;">
+<h4 class="h4-style-everypage">Our Events</h4>
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner" role="listbox">
+    <div class="carousel-item active">
+      <img class="d-block img-fluid event-image" src="../assets/images/events/event1.jpg">
+      <img class="d-block img-fluid event-image" src="../assets/images/events/event2.jpg">      
+    </div>
+    <div class="carousel-item">
+      <img class="d-block img-fluid event-image" src="../assets/images/events/event3.jpg">
+      <img class="d-block img-fluid event-image" src="../assets/images/events/event4.jpg">      
+    </div>
+    <div class="carousel-item">
+      <img class="d-block img-fluid event-image" src="../assets/images/events/event5.jpg">
+      <img class="d-block img-fluid event-image" src="../assets/images/events/event6.jpg">      
+    </div>
+    <div class="carousel-item">
+      <img class="d-block img-fluid event-image" src="../assets/images/events/event7.jpg">
+      <img class="d-block img-fluid event-image" src="../assets/images/events/event8.jpg">      
+    </div>
+  </div>
+</div>
+<div id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="card">
+    <div class="card-header" role="tab" id="eventOne">
+      <h5 class="mb-0">
+        <a data-toggle="collapse" data-parent="#accordion" href="#SchoolEvent" aria-expanded="true" aria-controls="SchoolEvent">
+          #1. School Events
+        </a>
+      </h5>
+    </div>
+
+    <div id="SchoolEvent" class="collapse show" role="tabpanel" aria-labelledby="eventOne">
+      <div class="card-block community-text">
+        <p style="text-align:center; color:green; margin:2%;">We organize several events to develop students.</p>
+        <div class="row">
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/events/event1.jpg" class="schoolevent-image"></div>
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/events/event2.jpg" class="schoolevent-image"></div>
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/events/event3.jpg" class="schoolevent-image"></div>       
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/events/event4.jpg" class="schoolevent-image"></div>       
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/events/event5.jpg" class="schoolevent-image"></div>     
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/events/event6.jpg" class="schoolevent-image"></div>      
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/events/event7.jpg" class="schoolevent-image"></div>       
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/events/event8.jpg" class="schoolevent-image"></div>
+          </div>
+        </div>
+       </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab" id="eventTwo">
+      <h5 class="mb-0">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#TourEvent" aria-expanded="false" aria-controls="TourEvent">
+          #2. Educational Tour
+        </a>
+      </h5>
+    </div>
+    <div id="TourEvent" class="collapse" role="tabpanel" aria-labelledby="eventTwo">
+      <div class="card-block community-text">
+        <p style="text-align:center; color:green; margin:2%;">We make trip to develop students.</p>
+        <div class="row">
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/events/tour1.jpg" class="schoolevent-image"></div>
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/events/tour2.jpg" class="schoolevent-image"></div>
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/events/tour3.jpg" class="schoolevent-image"></div>       
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/events/tour4.jpg" class="schoolevent-image"></div>       
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/events/tour5.jpg" class="schoolevent-image"></div>     
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/events/tour6.jpg" class="schoolevent-image"></div>      
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/events/tour7.jpg" class="schoolevent-image"></div>       
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/events/tour8.jpg" class="schoolevent-image"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!--Event End-->
+
+<!--Start of Curriculum-->
+
+<div class="curriculum" id="curriculum" style="margin-top:66px;">
+<h4 class="h4-style-everypage">Curriculum & Activities</h4>
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner" role="listbox">
+    <div class="carousel-item active">
+      <img class="d-block img-fluid curriculum-image" src="../assets/images/activities/curriculum1.jpg">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block img-fluid curriculum-image" src="../assets/images/activities/curriculum2.jpg">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block img-fluid curriculum-image" src="../assets/images/activities/curriculum3.jpg">
+    </div>
+  </div>
+</div>
+<ul class="list-unstyled" style="margin-top: 2%;">
+  <li class="media">
+    <div class="media-body curriculum-media">
+      <h5 class="mt-0 mb-1" style="padding-bottom: 1%;color:orangered;text-decoration:underline;">Objectives</h5>
+      Curriculum Framework has been developed on the foundation of trust, autonomy, flexibility and accountability with the main objective to generate fresh thinking and action.
+    </div>
+  </li>
+  <li class="media my-4">
+    <div class="media-body curriculum-media">
+      <h5 class="mt-0 mb-1" style="padding-bottom:1%; color:orangered;text-decoration:underline;">Curriculum Objectives</h5>
+      <p>
+      The objective in designing in-house curriculum is to offer teaching and learning which ensures that all pupils :<br>
+        1. Are interested and motivated in their work;<br>
+        2. Achieve success and make progress in their learning;<br>
+        3. Derive satisfaction from their achievements;<br>
+        4. Have confidence in their ability to work at an appropriate level;<br>
+        5. Experience an appropriately broad and balanced curriculum;<br>
+        6. Have equality of access to learning and subjects of the curriculum;<br>
+        7. Experience a range of teaching methods;<br>
+        8. Are involved in integrated and subject -specific activities;<br>
+        9. Work individually and as a member of a group;<br>
+        10. Have their progress in the key skills of learning monitored and recorded;<br>
+        11. Work with a number of adults;<br>
+        12. Learn in a purposeful atmosphere where there is mutual respect and deep understanding;<br>
+      </p>
+    </div>
+  </li>
+  <li class="media">
+    <div class="media-body curriculum-media">
+      <h5 class="mt-0 mb-1" style="padding-bottom: 1%;color:orangered;text-decoration:underline;">Competencies Fostered</h5>
+      <p>
+        1. Self - direction: the capacity to carry out independently and to take initiative<br>
+        2. Inventiveness: The creative use of resources, alternative methods and explanations<br>
+        3. Problem-solving involving diagnostic ability, problem formulation, problem solving skills<br>
+        4. Analytical and Evaluative Skills<br>
+        6. Decision - Making Skills: Deciding what is relevant and what is not, what to include and what to leave out<br>
+        7. Integrative Skills: The synthesis of ides, experiences, and information from different sources and disciplines.<br>
+        8. Interpersonal communication<br>
+        9. Communicating with peer group a and adults<br>
+        10. Elucidating ideas through written work, graphs, oral presentations etc.<br>
+      </p>
+    </div>
+  </li>
+</ul>
+<h5 class="curriculum-h4">Types of Curriculum & Activities</h5>
+<div id="accordion1" role="tablist" aria-multiselectable="true">
+  <div class="card">
+    <div class="card-header" role="tab" id="activityOne">
+      <h5 class="mb-0">
+        <a data-toggle="collapse" data-parent="#accordion1" href="#CurriculumOne" aria-expanded="true" aria-controls="CurriculumOne">
+          #1. PHISICAL
+        </a>
+      </h5>
+    </div>
+
+    <div id="CurriculumOne" class="collapse show" role="tabpanel" aria-labelledby="activityOne">
+      <div class="card-block community-text">
+        <p style="text-align:center; color:green; margin:2%;">I entered the school crying... I missed my mom…I missed my home.</p>                            
+        <div class="row">
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/activities/phisical1.jpg" class="schoolevent-image"></div>
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/activities/phisical2.jpg" class="schoolevent-image"></div>
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/activities/phisical3.jpg" class="schoolevent-image"></div>            
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/activities/phisical4.jpg"class="schoolevent-image"></div>            
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/activities/phisical5.jpg" class="schoolevent-image"></div>            
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/activities/phisical6.jpg" class="schoolevent-image"></div>            
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/activities/phisical7.jpg" class="schoolevent-image"></div>            
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/activities/phisical8.jpg" class="schoolevent-image"></div>            
+          </div>
+        </div>
+       </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab" id="activityTwo">
+      <h5 class="mb-0">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion1" href="#CurriculumTwo" aria-expanded="false" aria-controls="CurriculumTwo">
+          #2. SOCIAL & EMOTIONAL
+        </a>
+      </h5>
+    </div>
+    <div id="CurriculumTwo" class="collapse" role="tabpanel" aria-labelledby="activityTwo">
+      <div class="card-block community-text">
+        <p style="text-align:center; color:green; margin:2%;">Life is a celebration. So is each day at school! I love to care and share with my friends.</p>                            
+        <div class="row">
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/activities/social1.jpg" class="schoolevent-image"></div>
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/activities/social2.jpg" class="schoolevent-image"></div>
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/activities/social3.jpg" class="schoolevent-image"></div>            
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/activities/social4.jpg" class="schoolevent-image"></div>            
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/activities/social5.jpg" class="schoolevent-image"></div>            
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/activities/social6.jpg" class="schoolevent-image"></div>            
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/activities/social7.jpg" class="schoolevent-image"></div>            
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/activities/social8.jpg" class="schoolevent-image"></div>            
+          </div>
+        </div>
+       </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab" id="activityThree">
+      <h5 class="mb-0">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion1" href="#CurriculumThree" aria-expanded="false" aria-controls="CurriculumThree">
+          #3. LANGUAGE
+        </a>
+      </h5>
+    </div>
+
+    <div id="CurriculumThree" class="collapse" role="tabpanel" aria-labelledby="activityThree">
+      <div class="card-block community-text">
+        <p style="text-align:center; color:green; margin:2%;">My teacher holds my hands and takes me into magical world of stories, letters and words. I learn to express through words and sentences.</p>                            
+        <div class="row">
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/activities/language1.jpg" class="schoolevent-image"></div>
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/activities/language2.jpg" class="schoolevent-image"></div>
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/activities/language3.jpg" class="schoolevent-image"></div>            
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/activities/language4.jpg" class="schoolevent-image"></div>            
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/activities/language5.jpg" class="schoolevent-image"></div>            
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/activities/language6.jpg" class="schoolevent-image"></div>            
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/activities/language7.jpg" class="schoolevent-image"></div>            
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/activities/language8.jpg" class="schoolevent-image"></div>            
+          </div>
+        </div>
+       </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab" id="activityFour">
+      <h5 class="mb-0">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion1" href="#CurriculumFour" aria-expanded="false" aria-controls="CurriculumFour">
+          #4. SENSORY
+        </a>
+      </h5>
+    </div>
+
+    <div id="CurriculumFour" class="collapse" role="tabpanel" aria-labelledby="activityFour">
+      <div class="card-block community-text">
+        <p style="text-align:center; color:green; margin:2%;">A whole new world to see new sights, to feel new things, to hear different sounds, my imagination took wings!</p>                            
+        <div class="row">
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/activities/sensory1.jpg" class="schoolevent-image"></div>
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/activities/sensory2.jpg" class="schoolevent-image"></div>
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/activities/sensory3.jpg" class="schoolevent-image"></div>            
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/activities/sensory4.jpg" class="schoolevent-image"></div>            
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/activities/sensory5.jpg" class="schoolevent-image"></div>            
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/activities/sensory6.jpg" class="schoolevent-image"></div>            
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/activities/sensory7.jpg" class="schoolevent-image"></div>            
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/activities/sensory8.jpg" class="schoolevent-image"></div>            
+          </div>
+        </div>
+       </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab" id="activityFive">
+      <h5 class="mb-0">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion1" href="#CurriculumFive" aria-expanded="false" aria-controls="CurriculumFive">
+          #5. COGNITIVE
+        </a>
+      </h5>
+    </div>
+
+    <div id="CurriculumFive" class="collapse" role="tabpanel" aria-labelledby="activityFive">
+      <div class="card-block community-text">
+        <p style="text-align:center; color:green; margin:2%;">I learnt to think everyday in a new way. Through song and dance, scribbling and play.</p>                            
+        <div class="row">
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/activities/cognitive1.jpg" class="schoolevent-image"></div>
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/activities/cognitive2.jpg" class="schoolevent-image"></div>
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/activities/cognitive3.jpg" class="schoolevent-image"></div>            
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/activities/cognitive4.jpg" class="schoolevent-image"></div>            
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/activities/cognitive5.jpg" class="schoolevent-image"></div>            
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/activities/cognitive6.jpg" class="schoolevent-image"></div>            
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/activities/cognitive7.jpg" class="schoolevent-image"></div>            
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/activities/cognitive8.jpg" class="schoolevent-image"></div>            
+          </div>
+        </div>
+       </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!--Curriculum End-->
+
+<!--Start of Spaces-->
+
+<div class="spaces" id="spaces" style="margin-top:66px;">
+<h4 class="h4-style-everypage">Our Space</h4>
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner space-image" role="listbox">
+    <div class="carousel-item active">
+      <img class="d-block img-fluid space-image" src="../assets/images/spaces/space1.jpg">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block img-fluid space-image" src="../assets/images/spaces/space2.jpg">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block img-fluid space-image" src="../assets/images/spaces/space3.jpg">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block img-fluid space-image" src="../assets/images/spaces/space4.jpg">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block img-fluid space-image" src="../assets/images/spaces/space5.jpg">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block img-fluid space-image" src="../assets/images/spaces/space6.jpg">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block img-fluid space-image" src="../assets/images/spaces/space7.jpg">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block img-fluid space-image" src="../assets/images/spaces/space8.jpg">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block img-fluid space-image" src="../assets/images/spaces/space9.jpg">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block img-fluid space-image" src="../assets/images/spaces/space10.jpg">
+    </div>
+  </div>
+</div>
+</div>
+
+<!--End of Spaces-->
+
+<!--Start Of Achievement-->
+
+<div class="achievement" id="achievement" style="margin-top:66px;">
+<h4 class="h4-style-everypage">Our Achievements</h4>
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner" role="listbox">
+    <div class="carousel-item active">
+      <img class="d-block img-fluid community-image" src="../assets/images/achievements/achievement1.jpg">
+      <img class="d-block img-fluid community-image" src="../assets/images/achievements/achievement2.jpg">      
+    </div>
+    <div class="carousel-item">
+      <img class="d-block img-fluid community-image" src="../assets/images/achievements/achievement3.jpg">
+      <img class="d-block img-fluid community-image" src="../assets/images/achievements/achievement4.jpg">      
+    </div>
+    <div class="carousel-item">
+      <img class="d-block img-fluid community-image" src="../assets/images/achievements/achievement5.jpg">
+      <img class="d-block img-fluid community-image" src="../assets/images/achievements/achievement6.jpg">      
+    </div>
+    <div class="carousel-item">
+      <img class="d-block img-fluid community-image" src="../assets/images/achievements/achievement7.jpg">
+      <img class="d-block img-fluid community-image" src="../assets/images/achievements/achievement8.jpg">      
+    </div>
+  </div>
+</div>
+<div id="accordion2" role="tablist" aria-multiselectable="true">
+  <div class="card">
+    <div class="card-header" role="tab" id="achievementOne">
+      <h5 class="mb-0">
+        <a data-toggle="collapse" data-parent="#accordion2" href="#StudentAchievement" aria-expanded="true" aria-controls="StudentAchievement">
+          #1. Student's Achievement
+        </a>
+      </h5>
+    </div>
+
+    <div id="StudentAchievement" class="collapse show" role="tabpanel" aria-labelledby="achievementOne">
+      <div class="card-block community-text">
+        <h4 style="text-align:center; color:green; margin:2%;">Scholarship Awards</h4>                            
+        <div class="row">
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/person.jpg"><p>Student Name</p></div>
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/person.jpg"><p>Student Name</p></div>
+          </div>
+          <div class="clearfix hidden-sm-up"></div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/person.jpg"><p>Student Name</p></div>            
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/person.jpg"><p>Student Name</p></div>            
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/person.jpg"><p>Student Name</p></div>            
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/person.jpg"><p>Student Name</p></div>            
+          </div>
+          <div class="clearfix hidden-sm-up"></div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/person.jpg"><p>Student Name</p></div>            
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/person.jpg"><p>Student Name</p></div>            
+          </div>
+        </div>
+        <h4 style="text-align:center; color:green; margin:2%;">Secondary Awards</h4>        
+        <div class="row">
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/person.jpg"><p>Student Name</p></div>
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/person.jpg"><p>Student Name</p></div>
+          </div>
+          <div class="clearfix hidden-sm-up"></div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/person.jpg"><p>Student Name</p></div>            
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/person.jpg"><p>Student Name</p></div>            
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/person.jpg"><p>Student Name</p></div>            
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/person.jpg"><p>Student Name</p></div>            
+          </div>
+          <div class="clearfix hidden-sm-up"></div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/person.jpg"><p>Student Name</p></div>            
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/person.jpg"><p>Student Name</p></div>            
+          </div>
+        </div>
+        <h4 style="text-align:center; color:green; margin:2%;">Senior Secondary Awards</h4>        
+        <div class="row">
+         <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/person.jpg"><p>Student Name</p></div>
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/person.jpg"><p>Student Name</p></div>
+          </div>
+          <div class="clearfix hidden-sm-up"></div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/person.jpg"><p>Student Name</p></div>            
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/person.jpg"><p>Student Name</p></div>            
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/person.jpg"><p>Student Name</p></div>            
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/person.jpg"><p>Student Name</p></div>            
+          </div>
+          <div class="clearfix hidden-sm-up"></div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/person.jpg"><p>Student Name</p></div>            
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="text-center"><img src="../assets/images/person.jpg"><p>Student Name</p></div>            
+          </div>
+        </div>
+       </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab" id="achievementTwo">
+      <h5 class="mb-0">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion2" href="#schoolAchievement" aria-expanded="false" aria-controls="schoolAchievement">
+          #2. School Achievement
+        </a>
+      </h5>
+    </div>
+    <div id="schoolAchievement" class="collapse" role="tabpanel" aria-labelledby="achievementTwo">
+      <div class="card-block community-text">
+       <h4 style="text-align:center; color:green; margin:2%;">News Media Awards</h4>                            
+        <div class="row">
+          <div class="col-12">
+            <div class="text-center">
+              <img src="../assets/images/achievements/school_achievement.jpg" class="img-fluid">
+              <p>The School was nominated in 3 categories for NDTV awards at the National level and won in 2 categories</p> 
+              <p>1. School National Award for Excellence in Faculty Training.</p>
+              <p>2. National Award for Excellence in Inclusive Education.</p> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!--End Of Achivement-->
+
+<!--Start Of Community-->
+
+<div class="community" id="community" style="margin-top:66px;">
+<h4 class="h4-style-everypage">Our Community</h4>
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner" role="listbox">
+    <div class="carousel-item active">
+      <img class="d-block img-fluid community-image" src="../assets/images/community/community1.jpg">
+      <img class="d-block img-fluid community-image" src="../assets/images/community/community2.jpg">   
+    </div>
+    <div class="carousel-item">
+      <img class="d-block img-fluid community-image" src="../assets/images/community/community3.jpg">
+      <img class="d-block img-fluid community-image" src="../assets/images/community/community4.jpeg">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block img-fluid community-image" src="../assets/images/community/community5.jpg">
+      <img class="d-block img-fluid community-image" src="../assets/images/community/community6.jpg">      
+    </div>
+    <div class="carousel-item">
+      <img class="d-block img-fluid community-image" src="../assets/images/community/community7.jpg">
+      <img class="d-block img-fluid community-image" src="../assets/images/community/community8.jpg">   
+    </div>
+    <div class="carousel-item">
+      <img class="d-block img-fluid community-image" src="../assets/images/community/community9.jpg">
+      <img class="d-block img-fluid community-image" src="../assets/images/community/community10.jpg">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block img-fluid community-image" src="../assets/images/community/community11.jpg">
+      <img class="d-block img-fluid community-image" src="../assets/images/community/community12.jpg">      
+    </div>
+    <div class="carousel-item">
+      <img class="d-block img-fluid community-image" src="../assets/images/community/community13.jpg">
+      <img class="d-block img-fluid community-image" src="../assets/images/community/community14.jpg">   
+    </div>
+    <div class="carousel-item">
+      <img class="d-block img-fluid community-image" src="../assets/images/community/community15.jpg">
+      <img class="d-block img-fluid community-image" src="../assets/images/community/community16.jpg">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block img-fluid community-image" src="../assets/images/community/community17.jpg">
+      <img class="d-block img-fluid community-image" src="../assets/images/community/community18.jpg">      
+    </div>
+  </div>
+</div>
+<div id="accordion3" role="tablist" aria-multiselectable="true">
+  <div class="card">
+    <div class="card-header" role="tab" id="headingOne">
+      <h5 class="mb-0">
+        <a data-toggle="collapse" data-parent="#accordion3" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          #1. Paint A Wall
+        </a>
+      </h5>
+    </div>
+
+    <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+      <div class="card-block community-text">
+       Every drop makes the ocean...this is what the srkg children demonstrated through the palm printing activity. The wall to the entrance of *School Name* is adorned with 500+ palm prints to depict a colourful peacock. The majestic peacock is known for its patience, kindness, compassion and grace, values which each child learns at school. The children enjoyed putting up their tiny palm prints on the wall and were amazed to see the final result. They learnt that working together makes big and beautiful things possible.</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab" id="headingTwo">
+      <h5 class="mb-0">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion3" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          #2. Blood Donation Camp
+        </a>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="card-block community-text">
+        Blood Donation Club along with Rotary Club of xyz had organized a blood donation camp in school on date. Volunteers from Kai XYX School came to conduct it and they were ably assisted by the Interact members of class 7 & 8. The camp was on from time to time. x number bottles of blood were collected. It was a very good experience for the students and teachers involved.
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab" id="headingThree">
+      <h5 class="mb-0">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion3" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          #3. Rakhi Making Activity
+        </a>
+      </h5>
+    </div>
+    <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+      <div class="card-block community-text">
+       As part of Quality circle time activity, the students of class 6 made rakhis out of recycled material. The students  made wonderful rakhis which were colourful and ey ecatching.<br>
+       As a part of Quality Circle Time, students of class -6 visited xyz School for Raksha bandhan celebrations. Students carried hand made Rakhis with them which they themselves had made out of recycled material. The joy and happiness on the faces of the students of xyz School was indeed heart warming and touching. By reaching out to the xyz School students our students learnt the value of sensitivity and caring for others.
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab" id="headingFour">
+      <h5 class="mb-0">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion3" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+          #4. The Joy of Sharing
+        </a>
+      </h5>
+    </div>
+    <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour">
+      <div class="card-block community-text">
+        The willingness to empower the girl child and destitute from the neighbouring locality has driven many a young Name to offer their help to the shelter home – Person Name. Their visitations have not been confined only to offering gifts or supplies, but also to develop basic skills that can foster participatory development among the underprivileged.
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab" id="headingFive">
+      <h5 class="mb-0">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion3" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+          #5. Smart Student - Smart City 
+        </a>
+      </h5>
+    </div>
+    <div id="collapseFive" class="collapse" role="tabpanel" aria-labelledby="headingFive">
+      <div class="card-block community-text">
+       XYZ school shared their views about making their beloved Thane a smart city. Their enthusiasm in issues of public interest and their participation in a discussion in this regard with the Honourable Chief Minister of XYZ State, Name, the Municipal Commissioner of City Name, Person Name as well as the Secretary of education of State Name, Person Name was indeed very well received by one and all.
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!--End Of Community-->
 
 <!--Start Of Contact Form-->
-<div class="container" style="padding-top:2%;">
-<h4 class="text-center" style="text-decoration: underline; color: chocolate;">Contact Us</h4>
-    <p *ngIf="mail_successfull" style="text-align:center;color:green;">Your message has been send successfully!</p>
-    <form [formGroup]="contactForm" (ngSubmit)="sendEmail($event)">
+<div class="contact" id="contact" style="margin-top:66px;">
+<h4 class="h4-style-everypage">Contact Us</h4>
+  <p *ngIf="customer_mail_successfull" style="text-align:center;color:green;">Your message has been send successfully!</p>
+  <form [formGroup]="contactForm" (ngSubmit)="sendEmail($event)">
     <div class="row">
-      <div class="col">
+      <div class="col-md-6">
         <div class="form-group">
-          <label for="name" class="col-2 col-form-label">Name</label>
+          <label for="name" class="col-2 col-form-label contact-label">Name</label>
           <div class="col-10">
-            <input class="form-control" formControlName="name" type="text" placeholder="What's your mom call you?">
-              <p *ngIf="name.touched && name.hasError('required')" style="color:red; font-weight:600;">Required</p>            
+            <input class="form-control" formControlName="customer_name" type="text">
+              <p *ngIf="customer_name.touched && customer_name.hasError('required')" style="color:red; font-weight:600;">Required</p>          
           </div>
         </div>
       </div>
-      <div class="col">
+      <div class="col-md-6">
         <div class="form-group">
-          <label for="email" class="col-2 col-form-label">Email</label>
+          <label for="email" class="col-2 col-form-label contact-label">Email</label>
           <div class="col-10">
-            <input class="form-control" formControlName="email" type="email" placeholder="Where we can shoot an email?">
-              <p *ngIf="email.touched && email.hasError('required')" style="color:red; font-weight:600;">Required</p>
+            <input class="form-control" formControlName="customer_email" type="email">
+              <p *ngIf="customer_email.touched && customer_email.hasError('required')" style="color:red; font-weight:600;">Required</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="telephone" class="col-2 col-form-label contact-label">Telephone</label>
+          <div class="col-10">
+            <input class="form-control" formControlName="customer_telephone" type="tel">
+            <p *ngIf="customer_telephone.touched && customer_telephone.hasError('required')" style="color:red; font-weight:600;">Required</p>
+            </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="message" class="col-2 col-form-label contact-label">Message</label>
+          <div class="col-10">
+            <textarea class="form-control" formControlName="customer_message" type="text"></textarea>
+            <p *ngIf="customer_message.touched && customer_message.hasError('required')" style="color:red; font-weight:600;">Required</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <div class="col-10">
+            <button class="btn btn-success" type="submit" style="width:100px;" [disabled]="!contactForm.valid">Send</button>
           </div>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col">
-        <div class="form-group">
-          <label for="telephone" class="col-2 col-form-label">Telephone</label>
-          <div class="col-10">
-            <input class="form-control" formControlName="telephone" type="tel" placeholder="Where we can call you?">
-              <p *ngIf="telephone.touched && telephone.hasError('required')" style="color:red; font-weight:600;">Required</p>            
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="form-group">
-          <label for="message">Message</label>
-          <div class="col-10">
-            <textarea class="form-control text-area" formControlName="message" type="text" placeholder="What's in your mind?"></textarea>
-              <p *ngIf="message.touched && message.hasError('required')" style="color:red; font-weight:600;">Required</p>            
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row send-btn">
-      <div class="form-group">
-        <div class="col-10">
-          <button class="btn btn-success" type="submit" style="width:100px;" [disabled]="!contactForm.valid">Send</button>
-        </div>
-      </div>
-    </div>
-    </form>
+  </form>
 </div>
 
 <!--End Of Contact Form-->
@@ -109,24 +990,24 @@
 
 <!--Footer Start-->
 
-<footer class="container-fluid footer-style">
+<div class="footer" id="footer">
   <div class="row">
-    <div class="col-4">
+    <div class="col-md-4">
       <ul>
         <li><a href="">Community</a></li>
         <li><a href="">Blog</a></li>
         <li><a href="">Feedback</a></li>        
       </ul>
     </div>
-    <div class="col-4">
+    <div class="col-md-4">
       <ul>
         <li><a href="">Terms of Service</a></li>
         <li><a href="">Privacy Policy</a></li>
         <li><a href="">Help & Support</a></li>        
       </ul>
     </div>
-    <div class="col-4">
-      <address style="font-size:smaller; color:lavender;">
+    <div class="col-md-4">
+      <address class="address-style">
         <h6>Contact Us</h6>
          4-A, Green Nagar, Near Dalda Factory,<br>
          Durgapura, Jaipur, Rajasthan, Pin - 302018<br>
@@ -136,8 +1017,7 @@
     </div>
   </div>
   <div class="row social-border">
-    <div class="col"></div>
-    <div class="col-6 text-center" style="margin-top:2%;">
+    <div class="col text-center">
        <p style="font-size: x-large;">Stay Connected With Us</p>
        <ul class="social-ul">
         <li class="social-li">
@@ -154,7 +1034,6 @@
         </li>
       </ul>
     </div>
-    <div class="col"></div>
   </div>
   <div class="row">
     <div class="col">
@@ -164,6 +1043,10 @@
       <p style="margin: 10px 0px 10px 0px; text-align: -webkit-center;">Template Made By <a href="https://www.tejaaslabs.com" title="Visit Tejaas Labs">www.tejaaslabs.com</a></p>
     </div>
   </div>
-</footer>
+</div>
 
 <!--End Of Footer-->
+
+</div>
+
+<!--End of Container-->
